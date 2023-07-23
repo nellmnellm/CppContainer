@@ -119,6 +119,18 @@ public:
 	void get_size() const {
 		cout << count; // 함수마다 count되던 값을 출력함 
 	}
+
+
+	Node<T>* begin()  { // 리스트의 첫 부분을 포인터로 반환하는 함수. auto iterator로 지정가능
+		return head;
+	}
+
+	
+	Node<T>* end()  { //리스트의 끝부분 반환함수
+		return nullptr; 
+	}
+
+
 };
 
 
@@ -126,7 +138,7 @@ public:
 int main(void)
 {
 	list_bh <int> lis;
-	lis.push_back(1);
+	lis.push_back(2);
 	lis.push_back(2);
 	lis.push_front(3);
 	lis.push_front(4);
@@ -137,8 +149,16 @@ int main(void)
 
 	lis.print_list();
 	lis.get_size();
+	
+	cout << endl; 
 
-
+	
+	auto it = lis.begin();
+	for (auto i = it; i != lis.end(); i++)
+		i->data += 1;
+	lis.print_list();  //여기는 동작을 안하는 이유를 잘 모르겠음
+	
+	
 
 	return 0;
 }
